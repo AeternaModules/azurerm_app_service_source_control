@@ -1,3 +1,7 @@
+output "app_service_source_controls_id" {
+  description = "Map of id values across all app_service_source_controls, keyed the same as var.app_service_source_controls"
+  value       = { for k, v in azurerm_app_service_source_control.app_service_source_controls : k => v.id }
+}
 output "app_service_source_controls_app_id" {
   description = "Map of app_id values across all app_service_source_controls, keyed the same as var.app_service_source_controls"
   value       = { for k, v in azurerm_app_service_source_control.app_service_source_controls : k => v.app_id }
