@@ -12,7 +12,7 @@ output "app_service_source_controls_branch" {
 }
 output "app_service_source_controls_github_action_configuration" {
   description = "Map of github_action_configuration values across all app_service_source_controls, keyed the same as var.app_service_source_controls"
-  value       = { for k, v in azurerm_app_service_source_control.app_service_source_controls : k => v.github_action_configuration if v.github_action_configuration != null && length(v.github_action_configuration) > 0 }
+  value       = { for k, v in azurerm_app_service_source_control.app_service_source_controls : k => one(v.github_action_configuration) if v.github_action_configuration != null && length(v.github_action_configuration) > 0 }
   sensitive   = true
 }
 output "app_service_source_controls_repo_url" {
